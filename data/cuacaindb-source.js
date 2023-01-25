@@ -1,4 +1,4 @@
-class WeatherSource {
+class WeatherEarthquakeSource {
     static async getCuaca(provinsi, kota) {
         const response = await fetch(`https://cuaca-gempa-rest-api.vercel.app/weather/${provinsi}/${kota}`);
         const responseJson = await response.json();
@@ -17,20 +17,8 @@ class WeatherSource {
             <option value='${el.id}'>${el.name}</option>
         `})
         return responseJson;
-    }
-
-    static async getCityFromProv(prov) {
-        const response = await fetch(`https://cuaca-gempa-rest-api.vercel.app/weather/${prov}`)
-        const responseJson = await response.json();
-        const formCity = document.querySelector('#kota');
-        formCity.innerHTML = "";
-        responseJson.data.areas.forEach( el => {
-            formCity.innerHTML += `
-                <option>${el.description}</option>
-            `
-        })
-    }
+    }    
 }
 
-export default WeatherSource;
+export default WeatherEarthquakeSource;
 
